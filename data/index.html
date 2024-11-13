@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link href="assets/main.css"  rel="stylesheet" media="all">
+        <title>AURORA</title>
+    </head>
+
+    <body>
+        <div class="txt">
+            <br><br><h1>A U R O R A</h1>
+
+            <br><h3>INFORMATIONS TECHNIQUES</h3>
+            <p><b>Modèle CPU :</b> <a href="https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf" target="_blank">ESP32-WROOM-32UE</a>
+                <br><b>Architecture CPU :</b> <a href="https://riscv.org/" target="_blank">RISC-V</a>
+                <br><b>Moteurs vehicule :</b> <a href="https://handsontec.com/dataspecs/motor_fan/JGB37-550-Geared%20Motor.pdf" target="_blank">JGB37-520 DC Geared Motors</a>
+                <br><b>Moniteur batterie :</b> <a href="https://www.ti.com/lit/ds/symlink/ina219.pdf" target="_blank">INA219</a>
+                <br><b>Modèles accéléromètres :</b> <a href="https://cdn.sparkfun.com/assets/d/a/e/4/5/AK09918C_Datasheet.pdf" target="_blank">AK09918</a> / <a href="https://datasheet.lcsc.com/lcsc/2108161930_QST-QMI8658C_C2842151.pdf" target="_blank">QMI8658</a>
+                <br><b>Écran OLED :</b> <a href="https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf" target="_blank">Adafruit SSD1306</a>
+                <br><b>Pompe péristaltique :</b> <a href="https://www.handsontec.com/dataspecs/motor_fan/370-Motor.pdf" target="_blank">Moteur RC Boat 370</a>
+                <br><b>Servo-moteurs :</b> <a href="https://download.kamami.pl/p1181056-ST3215_Servo_User_Manual.pdf" target="_blank">ST3215</a>
+            </p>
+
+            <h3>INFORMATIONS DYNAMIQUES</h3>
+            <span id="data_dyn">Paramètres variables</span>
+
+            <h3>INFORMATIONS STATIQUES</h3>
+            <span id="data_sta">Paramètres statiques</span>
+
+            <br><h2>INTERFACE DE PITLOTAGE</h2>
+            <br><div class="controller">
+                <button onclick="robLeftForward()" id="leftforward"><span class="arrow"></span></button>
+                <button onclick="robForward()" id="forward"><span class="arrow"></span></button>
+                <button onclick="robRightForward()" id="rightforward"><span class="arrow"></span></button>
+                <div>
+                    <button onclick="robLeft()" id="left"><span class="arrow"></span></button>
+                    <button onclick="robStop()" id="stop"><span>STOP</span></button>
+                    <button onclick="robRight()" id="right"><span class="arrow"></span></button>
+                </div>
+                <button onclick="robLeftBackward()" id="leftbackward"><span class="arrow"></span></button>
+                <button onclick="robBackward()" id="backward"><span class="arrow"></span></button>
+                <button onclick="robRightBackward()" id="rightbackward"><span class="arrow"></span></button>
+            </div>
+
+            <br><br><h2>CONTROLE DE L'ARROSAGE</h2>
+            <br><h3>NIVEAU DE LA CUVE</h3>
+            <span id="data_vat">État de remplissage courant de la cuve</span>
+
+            <p>Vous pouvez activer et désactiver manuellement la pompe péristaltique permettant l'arrosage de vos plantations.
+                Lorsque vous remplissez le réservoir du véhicule jusqu'a la limite indiquée, faites un étalonnage afin d'indiquer qu'il est de nouveau plein.
+            </p>
+
+            <p><button id="vat" onclick="activePump()">ACT</button> Activer la pompe
+                <br><button id="tare" onclick="tarePump()">TARE</button> Réinitialiser la cuve
+            </p>
+
+            <br><h2>PITLOTAGE ANGULAIRE</h2>
+            <br><div class="controller">
+                <h4>BASE</h4>
+                <button id="left" onclick="cmdSend(0,1,1)"><span class="arrow"></span></button>
+                <button onclick="cmdSend(0,1,0)">STOP</button>
+                <button id="right" onclick="cmdSend(0,1,2)"><span class="arrow"></span></button>
+
+                <h4>ÉPAULE</h4>
+                <button id="forward" onclick="cmdSend(0,2,1)"><span class="arrow"></span></button>
+                <button onclick="cmdSend(0,2,0)">STOP</button>
+                <button id="backward" onclick="cmdSend(0,2,2)"><span class="arrow"></span></button>
+
+                <h4>COUDE</h4>
+                <button id="forward" onclick="cmdSend(0,3,2)"><span class="arrow"></span></button>
+                <button onclick="cmdSend(0,3,0)">STOP</button>
+                <button id="backward" onclick="cmdSend(0,3,1)"><span class="arrow"></span></button>
+
+                <h4>MAIN</h4>
+                <button id="left" onclick="cmdSend(0,4,2)"><span class="arrow"></span></button>
+                <button onclick="cmdSend(0,4,0)">STOP</button>
+                <button id="right" onclick="cmdSend(0,4,1)"><span class="arrow"></span></button>
+            </div>
+
+            <br><h3>PROCÉDURES</h3>
+            <p>Procédures d'arrêt d'urgence et d'initialisation du bras robotique</p>
+            <button onclick="cmdInit()">INIT</button> Position de base
+            <br><button onclick="cmdStop()">WARN</button> Arrêt de tous les moteurs
+
+            <br><br><h3>INFORMATION BRAS ROBOTIQUE</h3>
+            <span id="data_arm">Informations sur les servos-moteurs</span>
+
+            <br><br><br>
+        </div>
+        <script src="assets/script.js"></script>
+        <footer><a>ESPRESSIF</a></footer>
+    </body>
+</html>

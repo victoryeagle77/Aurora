@@ -1,0 +1,166 @@
+/* General */
+@font-face {
+    font-family: custom;
+    src: url(sansation_light_V3.woff);
+}
+
+body {
+    font-family: custom;
+    text-shadow: #ac6b2f 0 0 6px;
+    background-color: #000;
+    color: #fff;
+    margin: 0 auto;
+    font-size: 1.1em;
+}
+
+.txt {
+    margin: 0 auto;
+    width: 60%;
+    position: relative;
+}
+
+h1, h2 { text-align: center; }
+h3 { color: #8a8; }
+
+a {
+    text-decoration: none;
+    color: #e4681b;
+}
+a:hover { color: #e63c0e; }
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width : 100%;
+    text-align : center;
+    padding: 3px;
+    background-color: #000;
+}
+footer a {
+    color: #fff;
+    font-size: 0.9em;
+}
+
+/* Joystick */
+.controller {
+    display: block;
+    text-align: center;
+}
+.arrow {
+    border: solid #8a8;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+}
+#right { 
+    transform: rotate(-45deg);
+    border-radius: 50%;
+    margin: 10px;
+}
+#left { 
+    transform: rotate(135deg);
+    border-radius: 50%;
+    margin: 10px;
+}
+#forward { 
+    transform: rotate(-135deg);
+    border-radius: 50%;
+    margin: 10px;
+}
+#leftforward {
+    transform: rotate(180deg);
+    border-radius: 50%;
+    margin: 10px;
+}
+#rightforward {
+    transform: rotate(-90deg);
+    border-radius: 50%;
+    margin: 10px;
+}
+#backward { 
+    transform: rotate(45deg);
+    border-radius: 50%;
+    margin: 10px;
+}
+#leftbackward { 
+    transform: rotate(90deg);
+    border-radius: 50%;
+    margin: 10px;
+}
+#rightbackward { 
+    transform: rotate(0deg);
+    border-radius: 50%;
+    margin: 10px;
+}
+#stop{
+    width: 125px;
+    height: 125px;
+    border-radius: 20%;
+}
+
+/* Boutons interactifs */
+button {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.1em;
+    margin: 5px;
+    font-size: 80%;
+    line-height: 35px;
+    position: relative;
+    text-transform: uppercase;
+    color: #fff;
+    border: solid #8a8 3px;
+    border-radius: 10%;
+    box-shadow: 0px 0px 0px 1px #555 inset;
+    background-color: #000;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+button:hover {
+    color:#000;
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 1px #aaa inset;
+}
+button:after {
+    background: #fff;
+    border: 0px solid #000;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .8;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    width: 50px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 1;
+}
+button:hover:after {
+    background: #fff;
+    opacity: 0;
+    left: 120%;
+    transform: rotate(40deg);
+}
+
+/* Redimensionnement */
+@media all and (max-width: 1024px) {	
+    body { font-size: 0.9em; }
+    .txt { width: 80%; }
+    button {
+        width: 75px;
+        height: 75px;
+        font-size: 80%;
+    }
+    #stop{
+        width: 90px;
+        height: 90px;
+        margin: 10px;
+    }
+}
+
+@media all and (min-width: 2048px) {
+    body { font-size: 1.4em; }
+}
